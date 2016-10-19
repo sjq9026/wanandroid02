@@ -45,6 +45,7 @@ public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implemen
         initView(view);
         //获取最近热门信息数据
         mPresenter.initRecentlyData();
+
         return view;
     }
 
