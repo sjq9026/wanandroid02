@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 
 import com.android.sjq.wanandroid02.Contacts;
 import com.android.sjq.wanandroid02.TApplication;
-import com.android.sjq.wanandroid02.adapters.OnItemClickListener;
+import com.android.sjq.wanandroid02.adapters.OnBlogItemClickListener;
 import com.android.sjq.wanandroid02.adapters.RecentlyBlogAdapter;
 import com.android.sjq.wanandroid02.base.BasePresenter;
 import com.android.sjq.wanandroid02.modles.RecentlyBlogInfoEntity;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * Created by Administrator on 2016/10/19.
  */
 
-public class HomePresenter extends BasePresenter<HomeView> implements OnItemClickListener {
+public class HomePresenter extends BasePresenter<HomeView> implements OnBlogItemClickListener {
     private ArrayList<RecentlyBlogInfoEntity> mRecentlyBlogs;
 
     public void initRecentlyData() {
@@ -79,6 +79,7 @@ public class HomePresenter extends BasePresenter<HomeView> implements OnItemClic
                 super.onPostExecute(s);
                 RecentlyBlogAdapter adapter =
                         new RecentlyBlogAdapter(TApplication.mContext, mRecentlyBlogs);
+                adapter.setOnItemClickListener(HomePresenter.this);
                 //请求成功设置界面
                 view.setBlogSuc(adapter);
             }

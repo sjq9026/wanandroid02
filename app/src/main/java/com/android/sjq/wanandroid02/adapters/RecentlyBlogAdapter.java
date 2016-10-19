@@ -19,7 +19,7 @@ public class RecentlyBlogAdapter extends RecyclerView.Adapter<RecentlyBlogViewHo
     private Context mContext;
     private ArrayList<RecentlyBlogInfoEntity> mList;
     private LayoutInflater mInflater;
-    private OnItemClickListener listener;
+    private OnBlogItemClickListener listener;
 
     public RecentlyBlogAdapter(Context context, ArrayList<RecentlyBlogInfoEntity> list) {
         this.mContext = context;
@@ -27,7 +27,7 @@ public class RecentlyBlogAdapter extends RecyclerView.Adapter<RecentlyBlogViewHo
         this.mInflater = LayoutInflater.from(mContext);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
+    public void setOnItemClickListener(OnBlogItemClickListener listener) {
         this.listener = listener;
     }
 

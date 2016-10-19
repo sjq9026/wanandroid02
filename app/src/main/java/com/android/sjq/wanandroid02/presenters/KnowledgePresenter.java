@@ -6,7 +6,7 @@ import android.widget.Toast;
 import com.android.sjq.wanandroid02.Contacts;
 import com.android.sjq.wanandroid02.TApplication;
 import com.android.sjq.wanandroid02.adapters.ExpandableAdapter;
-import com.android.sjq.wanandroid02.adapters.OnItemClickListener;
+import com.android.sjq.wanandroid02.adapters.OnBlogItemClickListener;
 import com.android.sjq.wanandroid02.adapters.RecentlyBlogAdapter;
 import com.android.sjq.wanandroid02.base.BasePresenter;
 import com.android.sjq.wanandroid02.modles.LeaderEntity;
@@ -27,7 +27,7 @@ import java.util.ArrayList;
  * Created by Administrator on 2016/10/19.
  */
 
-public class KnowledgePresenter extends BasePresenter<KnowledgeView> implements OnItemClickListener {
+public class KnowledgePresenter extends BasePresenter<KnowledgeView> implements OnBlogItemClickListener {
     public ArrayList<LeaderEntity> leaderEntities;
     private ArrayList<RecentlyBlogInfoEntity> mRecentlyBlogs;
 
