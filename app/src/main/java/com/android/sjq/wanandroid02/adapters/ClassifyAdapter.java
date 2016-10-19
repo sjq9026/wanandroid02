@@ -33,12 +33,15 @@ public class ClassifyAdapter extends RecyclerView.Adapter<ClassifyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(final ClassifyViewHolder holder, int position) {
+    public void onBindViewHolder(final ClassifyViewHolder holder, final int position) {
         holder.getClassifyName().setText(mlist.get(position).getClassifyName());
         holder.getClassifyName().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onItemClick(holder.getLayoutPosition(),holder);
+                if (listener != null) {
+                    listener.onItemClick(mlist.get(holder.getLayoutPosition()), holder);
+                }
+
             }
         });
     }

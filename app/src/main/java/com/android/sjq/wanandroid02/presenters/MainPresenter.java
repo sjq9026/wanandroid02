@@ -3,10 +3,12 @@ package com.android.sjq.wanandroid02.presenters;
 import android.os.AsyncTask;
 
 import com.android.sjq.wanandroid02.Contacts;
+import com.android.sjq.wanandroid02.TApplication;
+import com.android.sjq.wanandroid02.adapters.ClassifyAdapter;
 import com.android.sjq.wanandroid02.base.BasePresenter;
 import com.android.sjq.wanandroid02.modles.ClassifyEntity;
 import com.android.sjq.wanandroid02.tool.Log;
-import com.android.sjq.wanandroid02.views.MainView;
+import com.android.sjq.wanandroid02.views.view.MainView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -62,8 +64,14 @@ public class MainPresenter extends BasePresenter<MainView> {
             protected void onPostExecute(ArrayList<ClassifyEntity> list) {
                 super.onPostExecute(list);
                 //设置界面显示
-                view.setClassify(list);
+                view.setClassify(getAdapter(list));
             }
         }.execute();
+    }
+
+
+    public ClassifyAdapter getAdapter(ArrayList<ClassifyEntity> list){
+        ClassifyAdapter adapter = new ClassifyAdapter(TApplication.mContext,list);
+        return adapter;
     }
 }
