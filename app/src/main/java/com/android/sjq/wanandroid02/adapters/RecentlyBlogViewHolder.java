@@ -3,7 +3,7 @@ package com.android.sjq.wanandroid02.adapters;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.sjq.wanandroid02.R;
@@ -19,7 +19,7 @@ public class RecentlyBlogViewHolder extends RecyclerView.ViewHolder {
     public TextView author_name_tv;
     public TextView source_tv;
     public TextView date_tv;
-    public LinearLayout layout;
+    public RelativeLayout layout;
 
 
     public RecentlyBlogViewHolder(Context context,View itemView) {
@@ -29,7 +29,7 @@ public class RecentlyBlogViewHolder extends RecyclerView.ViewHolder {
         author_name_tv = (TextView) itemView.findViewById(R.id.author_name_tv);
         source_tv = (TextView) itemView.findViewById(R.id.source_tv);
         date_tv = (TextView) itemView.findViewById(R.id.date_tv);
-        layout = (LinearLayout)itemView.findViewById(R.id.content_layout);
+        layout = (RelativeLayout)itemView.findViewById(R.id.content_layout);
     }
 
 //    public TextView getBlog_name_tv() {

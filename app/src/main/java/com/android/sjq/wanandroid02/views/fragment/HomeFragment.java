@@ -24,6 +24,7 @@ public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implemen
     private RecyclerView recently_blog_rv;
 
     public HomeFragment() {
+
     }
 
     public static HomeFragment newInstance() {

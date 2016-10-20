@@ -52,6 +52,9 @@ public class RecentlyBlogAdapter extends RecyclerView.Adapter<RecentlyBlogViewHo
         Log.print("blogName", entity.getBlogname());
         if (entity.getClassify() == null) {
             holder.classify_name_tv.setVisibility(View.GONE);
+        }else{
+            holder.classify_name_tv.setVisibility(View.VISIBLE);
+            holder.classify_name_tv.setText(entity.getClassify());
         }
 
         holder.author_name_tv.setText(entity.getAuthor());
