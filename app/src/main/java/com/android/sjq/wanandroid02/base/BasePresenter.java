@@ -7,6 +7,7 @@ package com.android.sjq.wanandroid02.base;
 public abstract class BasePresenter<V> {
     public V view;
 
+
     public void onAttach(V view) {
         this.view = view;
     }

@@ -18,6 +18,7 @@ import com.android.sjq.wanandroid02.modles.RecentlyBlogInfoEntity;
 import com.android.sjq.wanandroid02.presenters.KnowledgePresenter;
 import com.android.sjq.wanandroid02.tool.Log;
 import com.android.sjq.wanandroid02.views.activities.BlogDetailActivity;
+import com.android.sjq.wanandroid02.views.activities.MainActivity;
 import com.android.sjq.wanandroid02.views.view.KnowledgeView;
 
 //知识体系Fragment
@@ -46,6 +47,7 @@ public class KnowledgeSystemFragment extends BaseFragment<KnowledgeView, Knowled
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_knowledge_system, container, false);
         initView(view);
+        ((MainActivity) getActivity()).showDialog();
         mPresenter.initData();
         return view;
     }
@@ -80,6 +82,7 @@ public class KnowledgeSystemFragment extends BaseFragment<KnowledgeView, Knowled
 
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+        ((MainActivity) getActivity()).showDialog();
         mPresenter.getBlogList(groupPosition, childPosition);
         return true;
     }
@@ -93,6 +96,7 @@ public class KnowledgeSystemFragment extends BaseFragment<KnowledgeView, Knowled
 
     @Override
     public void setBlogListAdapter(RecentlyBlogAdapter adapter) {
+        ((MainActivity) getActivity()).dissmissDialog();
         know_rl.setAdapter(adapter);
     }
 

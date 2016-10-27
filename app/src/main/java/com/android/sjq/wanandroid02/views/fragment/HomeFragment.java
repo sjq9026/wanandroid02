@@ -1,5 +1,6 @@
 package com.android.sjq.wanandroid02.views.fragment;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,12 +17,16 @@ import com.android.sjq.wanandroid02.modles.RecentlyBlogInfoEntity;
 import com.android.sjq.wanandroid02.presenters.HomePresenter;
 import com.android.sjq.wanandroid02.tool.Log;
 import com.android.sjq.wanandroid02.views.activities.BlogDetailActivity;
+import com.android.sjq.wanandroid02.views.activities.MainActivity;
 import com.android.sjq.wanandroid02.views.view.HomeView;
 
 
 //首页Fragment
-public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implements HomeView {
+public class HomeFragment extends BaseFragment<HomeView, HomePresenter>
+        implements HomeView {
     private RecyclerView recently_blog_rv;
+    private Dialog dialog;
+    private View view;
 
     public HomeFragment() {
 
@@ -31,6 +36,7 @@ public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implemen
         HomeFragment fragment = new HomeFragment();
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,11 +48,11 @@ public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implemen
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_home, container, false);
         initView(view);
+        ((MainActivity) getActivity()).showDialog();
         //获取最近热门信息数据
         mPresenter.initRecentlyData();
-
         return view;
     }
 
@@ -74,6 +80,7 @@ public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implemen
 
     @Override
     public void setBlogSuc(RecentlyBlogAdapter adapter) {
+        ((MainActivity) getActivity()).dissmissDialog();
         recently_blog_rv.setAdapter(adapter);
     }
 
@@ -92,4 +99,7 @@ public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implemen
         Log.print("url", entity.getBlogaddress());
         startActivity(intent);
     }
+
+
+
 }

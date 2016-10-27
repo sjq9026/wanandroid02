@@ -17,6 +17,7 @@ import com.android.sjq.wanandroid02.modles.ClassifyEntity;
 import com.android.sjq.wanandroid02.modles.RecentlyBlogInfoEntity;
 import com.android.sjq.wanandroid02.presenters.FrameworkPresenter;
 import com.android.sjq.wanandroid02.views.activities.BlogDetailActivity;
+import com.android.sjq.wanandroid02.views.activities.MainActivity;
 import com.android.sjq.wanandroid02.views.view.FrameworkView;
 
 
@@ -47,6 +48,7 @@ public class FrameworkFragment extends BaseFragment<FrameworkView, FrameworkPres
         View view = inflater.inflate(R.layout.fragment_framework, container, false);
         // Inflate the layout for this fragment
         initView(view);
+        ((MainActivity) getActivity()).showDialog();
         //加载数据
         mPresenter.initCategoryData();
         return view;
@@ -83,11 +85,13 @@ public class FrameworkFragment extends BaseFragment<FrameworkView, FrameworkPres
 
     @Override
     public void setBlogAdapter(RecentlyBlogAdapter adapter) {
+        ((MainActivity) getActivity()).dissmissDialog();
         blog_rv.setAdapter(adapter);
     }
 
     @Override
     public void onCategoryClick(ClassifyEntity entity) {
+        ((MainActivity) getActivity()).showDialog();
         mPresenter.getBlogData(entity);
     }
 

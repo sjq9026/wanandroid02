@@ -5,7 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 
 import com.android.sjq.wanandroid02.Contacts;
 import com.android.sjq.wanandroid02.R;
@@ -34,6 +36,7 @@ public class MainActivity extends BaseMvpActivity<MainView, MainPresenter> imple
     private FrameworkFragment frameworkFragment;
     private NewTechnologyFragment newTechnologyFragment;
     private OpenSourceProjectFragment openSourceProjectFragment;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class MainActivity extends BaseMvpActivity<MainView, MainPresenter> imple
         classify_rv = (RecyclerView) findViewById(R.id.classify_rv);
         classify_rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         frameLayout = (FrameLayout) findViewById(R.id.content_layout);
+        mProgressBar = (ProgressBar) findViewById(R.id.loding_pb);
     }
 
 
@@ -70,6 +74,15 @@ public class MainActivity extends BaseMvpActivity<MainView, MainPresenter> imple
         classify_rv.setAdapter(adapter);
     }
 
+    @Override
+    public void showDialog() {
+        mProgressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void dissmissDialog() {
+        mProgressBar.setVisibility(View.GONE);
+    }
 
 
     public void setDefaultFragment(Bundle savedInstanceState) {

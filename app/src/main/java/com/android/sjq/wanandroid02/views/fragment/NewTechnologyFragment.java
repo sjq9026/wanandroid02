@@ -17,6 +17,7 @@ import com.android.sjq.wanandroid02.modles.ClassifyEntity;
 import com.android.sjq.wanandroid02.modles.RecentlyBlogInfoEntity;
 import com.android.sjq.wanandroid02.presenters.NewTechnologyPresenter;
 import com.android.sjq.wanandroid02.views.activities.BlogDetailActivity;
+import com.android.sjq.wanandroid02.views.activities.MainActivity;
 import com.android.sjq.wanandroid02.views.view.NewTechnologyView;
 
 
@@ -48,6 +49,7 @@ public class NewTechnologyFragment extends BaseFragment<NewTechnologyView,NewTec
         View view = inflater.inflate(R.layout.fragment_new_technology, container, false);
         // Inflate the layout for this fragment
         initView(view);
+        ((MainActivity) getActivity()).showDialog();
         //加载数据
         mPresenter.initCategoryData();
         return view;
@@ -84,12 +86,15 @@ public class NewTechnologyFragment extends BaseFragment<NewTechnologyView,NewTec
 
     @Override
     public void setBlogAdapter(RecentlyBlogAdapter adapter) {
+        ((MainActivity) getActivity()).dissmissDialog();
         blog_rv.setAdapter(adapter);
     }
 
     @Override
     public void onCategoryClick(ClassifyEntity entity) {
+        ((MainActivity) getActivity()).showDialog();
         mPresenter.getBlogData(entity);
+
     }
 
     @Override

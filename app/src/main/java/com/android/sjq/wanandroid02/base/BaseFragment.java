@@ -10,27 +10,20 @@ import android.widget.TextView;
 
 import com.android.sjq.wanandroid02.R;
 
-public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragment implements BaseView {
+public abstract class BaseFragment<V extends BaseView, T extends BasePresenter<V>>
+                                                    extends Fragment implements BaseView {
     public T mPresenter;
 
     public BaseFragment() {
-        // Required empty public constructor
     }
-//
-//    public static BaseFragment newInstance(String param1, String param2) {
-//        BaseFragment fragment = new BaseFragment();
-//        return fragment;
-//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         mPresenter = initPresenter();
         mPresenter.onAttach((V) this);
         TextView textView = new TextView(getActivity());

@@ -16,6 +16,7 @@ import com.android.sjq.wanandroid02.adapters.RecentlyBlogAdapter;
 import com.android.sjq.wanandroid02.base.BaseFragment;
 import com.android.sjq.wanandroid02.presenters.OpenSourcePresenter;
 import com.android.sjq.wanandroid02.views.activities.BlogDetailActivity;
+import com.android.sjq.wanandroid02.views.activities.MainActivity;
 import com.android.sjq.wanandroid02.views.view.OpenSourceView;
 
 
@@ -48,6 +49,7 @@ public class OpenSourceProjectFragment extends BaseFragment<OpenSourceView, Open
         View view = inflater.inflate(R.layout.fragment_open_source_project, container, false);
         initView(view);
         //获取数据
+        ((MainActivity) getActivity()).showDialog();
         mPresenter.getClassifyData();
         // Inflate the layout for this fragment
         return view;
@@ -62,6 +64,7 @@ public class OpenSourceProjectFragment extends BaseFragment<OpenSourceView, Open
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 mPresenter.onGroupItemClickListener(groupPosition, childPosition);
+                ((MainActivity) getActivity()).showDialog();
                 return false;
             }
         });
@@ -92,6 +95,7 @@ public class OpenSourceProjectFragment extends BaseFragment<OpenSourceView, Open
 
     @Override
     public void setBlogLvAdapter(RecentlyBlogAdapter adapter) {
+        ((MainActivity) getActivity()).dissmissDialog();
         blogs_lv.setAdapter(adapter);
     }
 

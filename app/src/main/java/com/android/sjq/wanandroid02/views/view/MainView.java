@@ -9,4 +9,6 @@ import com.android.sjq.wanandroid02.base.BaseView;
 
 public interface MainView extends BaseView {
     void setClassify(ClassifyAdapter adapter);
+    void showDialog();
+    void dissmissDialog();
 }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 public abstract class BaseMvpActivity<V, T extends BasePresenter<V>> extends AppCompatActivity implements BaseView {
+
     public T mPresenter;
 
     @Override

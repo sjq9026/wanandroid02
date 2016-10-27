@@ -17,6 +17,7 @@ import com.android.sjq.wanandroid02.modles.ClassifyEntity;
 import com.android.sjq.wanandroid02.modles.RecentlyBlogInfoEntity;
 import com.android.sjq.wanandroid02.presenters.PopularTopicsPresenter;
 import com.android.sjq.wanandroid02.views.activities.BlogDetailActivity;
+import com.android.sjq.wanandroid02.views.activities.MainActivity;
 import com.android.sjq.wanandroid02.views.view.PopularTopicsView;
 
 
@@ -45,6 +46,7 @@ public class PopularTopicsFragment extends BaseFragment<PopularTopicsView, Popul
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_popular_topics, container, false);
         initView(view);
+        ((MainActivity) getActivity()).showDialog();
         //获取数据
         mPresenter.getClassifyData();
         return view;
@@ -71,11 +73,13 @@ public class PopularTopicsFragment extends BaseFragment<PopularTopicsView, Popul
 
     @Override
     public void setBlogListAdapter(RecentlyBlogAdapter adapter) {
+        ((MainActivity) getActivity()).dissmissDialog();
         blog_rv.setAdapter(adapter);
     }
 
     @Override
     public void onFirstItemClick(ClassifyEntity entity) {
+        ((MainActivity) getActivity()).showDialog();
         mPresenter.getBlogData(entity);
     }
 
