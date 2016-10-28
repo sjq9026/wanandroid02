@@ -58,6 +58,7 @@ public class OpenSourceProjectFragment extends BaseFragment<OpenSourceView, Open
     //初始化界面
     private void initView(View view) {
         category_lv = (ExpandableListView) view.findViewById(R.id.open_category_lv);
+        category_lv.setGroupIndicator(null);
         blogs_lv = (RecyclerView) view.findViewById(R.id.open_blog_rl);
         blogs_lv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         category_lv.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
